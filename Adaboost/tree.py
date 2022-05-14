@@ -127,15 +127,13 @@ class Node:
         """
         predict the outcome of one input sample by following the tree until a leaf is reached
         """
-        while True:
+        if self.leaf:
+            return self.prediction
 
-            if self.leaf:
-                return self.prediction
-
-            elif sample[self.feature] < self.value:
-                return self.left_node.predict_one(sample)
-            else:
-                return self.right_node.predict_one(sample)
+        elif sample[self.feature] < self.value:
+            return self.left_node.predict_one(sample)
+        else:
+            return self.right_node.predict_one(sample)
 
     def predict(self, test):
         """
