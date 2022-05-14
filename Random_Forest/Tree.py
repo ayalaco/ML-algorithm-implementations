@@ -3,7 +3,7 @@ import pandas as pd
 
 class Node:
 
-    def __init__(self, df, labels, depth=2, num_rand_features=None, forest=False):
+    def __init__(self, df: pd.DataFrame, labels: pd.Series, depth=2, num_rand_features=None, forest=False):
 
         self.df = df
         self.labels = labels
@@ -17,7 +17,8 @@ class Node:
         if self.forest and (self.num_rand_features is None):
             self.num_rand_features = np.floor(np.sqrt(df.shape[1]))
 
-    def find_split_points(self, values):
+    @staticmethod
+    def find_split_points(values: np.ndarray) -> list:
         """
         find all possible split points to divide a single feature's values
         """
@@ -31,11 +32,11 @@ class Node:
 
         return split_points
 
-    def split_mask(self, feature_ind, value):
+    def split_mask(self, feature_ind: str, value: np.float) -> pd.Series:
 
         return self.df[feature_ind] < value
 
-    def get_split(self):
+    def get_split(self) -> (str, np.float):
         """
         finds the ideal feature and split point to divide the data based on gini score
         """
@@ -79,7 +80,7 @@ class Node:
 
         return best_feature, best_value
 
-    def split_one_node(self, feature, value):
+    def split_one_node(self, feature: str, value: np.float):
         """
         divide the dataset according to the specified feature and value
         """
@@ -92,7 +93,7 @@ class Node:
 
         return left, right, left_labels, right_labels
 
-    def is_leaf(self, max_depth, left, right):
+    def is_leaf(self, max_depth, left: pd.DataFrame, right: pd.DataFrame):
         """
         check if we have reached maximum depth or the dataset can no longer be divided
         """
