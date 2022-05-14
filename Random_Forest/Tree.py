@@ -1,5 +1,5 @@
 import numpy as np
-
+import pandas as pd
 
 class Node:
 
@@ -138,7 +138,7 @@ class Node:
         else:
             return self.right_node.predict_one(sample)
 
-    def predict(self, test):
+    def predict(self, test: pd.DataFrame):
         """
         predict the outcome for several test samples
         """
