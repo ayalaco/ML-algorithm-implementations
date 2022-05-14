@@ -23,7 +23,7 @@ class RandomForest:
 
         return sub_data, sub_labels
 
-    def build_forest(self):
+    def fit(self):
         """
         populate the forest with trees built based on different random sub-samples
         """
@@ -55,7 +55,7 @@ class RandomForest:
         # deal with 50-50 probabilities (won't happen for on odd number of trees):
         if prediction_mode.shape[1] == 2:
             ind_ambig = prediction_mode[1].notnull()
-            prediction_mode.iloc[ind_ambig, 0] = 'M'  # better to have a false positive in this case
+            prediction_mode.iloc[ind_ambig, 0] = 1  # better to have a false positive in this case
             prediction_mode.drop(columns=1, inplace=True)
 
         return prediction_mode.squeeze()
