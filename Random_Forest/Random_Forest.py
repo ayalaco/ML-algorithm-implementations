@@ -4,7 +4,7 @@ from Tree import Node
 
 class RandomForest:
 
-    def __init__(self, dataset, labels, size_subsample, num_rand_features, num_trees, max_depth):
+    def __init__(self, dataset: pd.DataFrame, labels: pd.Series, size_subsample, num_rand_features, num_trees, max_depth):
 
         self.dataset = dataset
         self.labels = labels
@@ -39,7 +39,7 @@ class RandomForest:
 
             self.trees.append(root)
 
-    def predict(self, X_test: pd.DataFrame):
+    def predict(self, X_test: pd.DataFrame) -> pd.Series:
         """
         predict an outcome for all trees, then choose the most common prediction.
         """
