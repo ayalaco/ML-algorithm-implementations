@@ -39,7 +39,7 @@ class RandomForest:
 
             self.trees.append(root)
 
-    def predict(self, X_test):
+    def predict(self, X_test: pd.DataFrame):
         """
         predict an outcome for all trees, then choose the most common prediction.
         """
