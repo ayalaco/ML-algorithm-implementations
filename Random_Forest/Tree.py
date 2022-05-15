@@ -8,10 +8,14 @@ class Node:
         self.df = df
         self.labels = labels
         self.depth = depth
+        
+        # to be filled during training
         self.leaf = False
         self.feature, self.value = None, None
         self.left_node, self.right_node = None, None
         self.prediction = None
+        
+        # For random forest calculations
         self.forest = forest
         self.num_rand_features = num_rand_features
         if self.forest and (self.num_rand_features is None):
