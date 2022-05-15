@@ -14,8 +14,8 @@ if __name__ == '__main__':
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # build a forest and predict
-    size_subsample = int(np.floor(len(y_train) / 3))
-    num_rand_features = int(np.floor(np.sqrt(x_train.shape[1])))
+    size_subsample = int(len(y_train) / 3)
+    num_rand_features = int(np.sqrt(x_train.shape[1]))
     num_trees = 50
     max_depth = 2
 
