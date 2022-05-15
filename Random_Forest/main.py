@@ -25,4 +25,4 @@ if __name__ == '__main__':
     predictions = forest.predict(x_test)
 
     accuracy = np.sum(predictions == y_test) / predictions.shape[0]
-    print(f"Decision tree accuracy is {accuracy * 100:2.4}%")
+    print(f"Random forest accuracy: {accuracy * 100:2.4}%")
