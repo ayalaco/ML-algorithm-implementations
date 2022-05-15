@@ -52,7 +52,7 @@ class Node:
             features = self.df.columns
 
         # initialize lowest_gini with an unrealisticly high value:
-        lowest_gini = 1.0  # unrealisticly high value
+        lowest_gini = 1.0 
 
         # iterate over available features
         for col in features:
